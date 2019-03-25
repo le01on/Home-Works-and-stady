@@ -8,5 +8,6 @@ $ar3 = array_combine($ar2, $ar1);
 $ar4 = $ar3;
 ksort($ar4);
 
-echo var_dump($ar3) . "<br>";
-echo var_dump($ar4) . "<br>";
+print_r($ar3);
+echo "<br>";
+print_r($ar4);
