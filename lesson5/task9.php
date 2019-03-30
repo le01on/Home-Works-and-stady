@@ -33,7 +33,7 @@ echo "<br>";
 а произвольное количество, оно задается переменной так: $number = 5; - это первый ряд пирамиды.*/
 $number = 70;
 $result = "<br>";
-for ($i = 0; $i <$number; $i++) {
+for ($i = 0; $i < $number; $i++) {
     $result = $result . "x";
     $array[] = $result;
 };
