@@ -46,7 +46,6 @@ $secondArr = array_filter($lastArr,function ($salery) {
 echo '<table cellpadding="5" cellspacing="0" border="1">';
 echo "<thead>
     <tr>
-        <th>Key</th>
         <th>Name</th>
         <th>Salery</th>
         <th>Work_hours</th>
@@ -54,7 +53,7 @@ echo "<thead>
     </thead>";
 foreach ($firstArr as $key => $value) {
     echo
-        "<tr><td>".$key."</td><td>".$value['name']."</td><td>".$value['salery']."</td><td>".$value['work_hours']."</td></tr>";
+        "<tr><td>".$value['name']."</td><td>".$value['salery']."</td><td>".$value['work_hours']."</td></tr>";
 }
 echo "</table>" . "<br>";
 
@@ -62,7 +61,6 @@ echo "</table>" . "<br>";
 echo '<table cellpadding="5" cellspacing="0" border="1">';
 echo "<thead>
     <tr>
-         <th>Key</th>
         <th>Name</th>
         <th>Salery</th>
         <th>Work_hours</th>
@@ -70,7 +68,7 @@ echo "<thead>
     </thead>";
 foreach ($secondArr as $key => $value) {
     echo
-        "<tr><td>".$key."</td><td>".$value['name']."</td><td>".$value['salery']."</td><td>".$value['work_hours']."</td></tr>";
+        "<tr><td>".$value['name']."</td><td>".$value['salery']."</td><td>".$value['work_hours']."</td></tr>";
 }
 echo "</table>";
 
