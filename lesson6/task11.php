@@ -17,27 +17,26 @@ reversCount(10);
 
 //2) задание
 
-$num = 5;
+$num = 7;
 
 $array = range(1, $num, 1);
 
 foreach ($array as $elem) {
     for ($i = 1; $i <= $elem; $i++) {
-        $newArray[] = $elem;
+        $newArray[] = $elem . ",";
     }
 }
-$newStr = implode("", $newArray);
-echo substr($newStr, 0, $num) . "<br>";
-
-// немного другое решение без foreach
-
-$num1 = 8;
-
-    for ($i = 1; $i <= $num1; $i++) {
-        $strArr[] = str_repeat($i, $i);
+function countValue (array $arr, int $val) {
+    static $count = 0;
+    if ($count >= 0 ) {
+        echo $arr[$count];
+    }
+    $count++;
+    if ($count < $val) {
+        countValue($arr, $val);
+    }
 }
-$str = implode("", $strArr);
-  echo substr($str, 0, $num1);
+countValue($newArray, $num);
 
 
 
