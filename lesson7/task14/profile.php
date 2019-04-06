@@ -11,7 +11,9 @@ if (!empty($_REQUEST['newEmail'])) {
     }
 if (!empty($_REQUEST['newPass'])) {
     $_SESSION['password'] = $_REQUEST['newPass'];
-    }
+    }?>
+<h3>Личний кабинет</h3>
+<?php
 echo "Время заполнения формы: " . date('r', $_SESSION['time']) . "<br>";
 echo "Ваше имя: " . $_SESSION['name'] . "<br>";
 echo "Ваш ник: " . $_SESSION['nikname'] . "<br>";
@@ -22,7 +24,7 @@ echo "Изменение данных:";
 
 <form action="" method="post">
     <label>Новое имя</label>
-    <input name="newName"><br>
+    <input type="text" name="newName"><br>
     <label>Новый ник</label>
     <input name="newNikname"><br>
     <label>Новый email</label>
