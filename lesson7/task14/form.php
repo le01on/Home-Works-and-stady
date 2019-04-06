@@ -5,9 +5,9 @@ if (isset($_REQUEST['submit'])) {
     $_SESSION['name'] = $_REQUEST['name'];
     $_SESSION['nikname'] = $_REQUEST['nikname'];
     $_SESSION['email'] = $_REQUEST['email'];
-    $_SESSION['password'] = $_REQUEST['password'];
+    $_SESSION['password'] = $_REQUEST['pass'];
+    $_SESSION['time'] = time();
 }
-var_dump($_SESSION);
 ?>
 
 <form action="" method="post">
@@ -16,8 +16,8 @@ var_dump($_SESSION);
     <label>Введите Ваш Ник</label>
     <input name="nikname"><br>
     <label>Введите email</label>
-    <input type="email"><br>
+    <input type="email" name="email"><br>
     <label>Введите Пароль</label>
-    <input type="password"><br>
+    <input type="password" name="pass"><br>
     <input type="submit" name="submit" value="Отправить">
 </form>
