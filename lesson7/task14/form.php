@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!empty($_REQUEST['name'] && $_REQUEST['nikname'] && $_REQUEST['email'] && $_REQUEST['pass'])) {
+if (array_key_exists('name', $_REQUEST)) {
     $_SESSION['name'] = $_REQUEST['name'];
     $_SESSION['nikname'] = $_REQUEST['nikname'];
     $_SESSION['email'] = $_REQUEST['email'];
@@ -22,3 +22,5 @@ if (!empty($_REQUEST['name'] && $_REQUEST['nikname'] && $_REQUEST['email'] && $_
     <input type="password" name="pass"><br>
     <input type="submit" name="submit" value="Отправить">
 </form>
+
+<?php //(!empty($_REQUEST['name'] && $_REQUEST['nikname'] && $_REQUEST['email'] && $_REQUEST['pass']))

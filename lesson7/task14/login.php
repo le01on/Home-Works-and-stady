@@ -1,5 +1,9 @@
 <?php
 session_start();
+$login = '';
+if (isset($_REQUEST['login'])) {
+        $login = $_REQUEST['login'];
+}
 ?>
 
 <form action="" method="post">
@@ -10,10 +14,10 @@ session_start();
     <input type="password" placeholder="Введите Пароль" name="pass">
     <input type="submit" name="submit" value="Отправить">
     <?php
-    if ($_REQUEST['login'] === $_SESSION['email'] && $_REQUEST['pass'] === $_SESSION['password']
+    if ($login === $_SESSION['email'] && $_REQUEST['pass'] === $_SESSION['password']
         && !empty($_REQUEST['login'])) {
         header('Location: http://127.1.0.1:8080/task14/profile.php');
-    }elseif ($_REQUEST['login'] === $_SESSION['nikname'] && $_REQUEST['pass'] === $_SESSION['password']
+    }elseif ($login === $_SESSION['nikname'] && $_REQUEST['pass'] === $_SESSION['password']
         && !empty($_REQUEST['login'])) {
         header('Location: http://127.1.0.1:8080/task14/profile.php');
     }else echo "<br>" . "<br>" . "Вы еще не ввели логин и пароль или введенные данные не совпадают"
