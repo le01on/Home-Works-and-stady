@@ -22,5 +22,3 @@ if (array_key_exists('name', $_REQUEST)) {
     <input type="password" name="pass"><br>
     <input type="submit" name="submit" value="Отправить">
 </form>
-
-<?php //(!empty($_REQUEST['name'] && $_REQUEST['nikname'] && $_REQUEST['email'] && $_REQUEST['pass']))
