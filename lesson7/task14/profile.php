@@ -24,12 +24,12 @@ echo "Изменение данных:";
 
 <form action="" method="post">
     <label>Новое имя</label>
-    <input type="text" name="newName"><br>
+    <input type="text" name="newName" value="<?php echo $_SESSION['name'] ?>"><br>
     <label>Новый ник</label>
-    <input name="newNikname"><br>
+    <input name="newNikname" value="<?php echo $_SESSION['nikname']?>"><br>
     <label>Новый email</label>
-    <input type="email" name="newEmail"><br>
+    <input type="email" name="newEmail" value="<?php echo $_SESSION['email']?>"><br>
     <label>Новый Пароль</label>
-    <input type="password" name="newPass"><br>
+    <input type="password" name="newPass" value="<?php echo $_SESSION['password']?>"><br>
     <input type="submit" name="submit" value="Изменить">
 </form>
