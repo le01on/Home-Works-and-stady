@@ -1,0 +1,111 @@
+<?php
+require_once 'EmployeeInterface';
+require_once 'ManagerInterface';
+
+class Manager implements EmployeeInterface, ManagerInterface
+{
+    private $name;
+    private $age;
+    private $salary;
+    private $position;
+    private $startDay;
+    private $employees = [];
+
+    public function __construct($name, $age, $startDay, $position)
+    {
+        $this->name = $name;
+        $this->setAge($age);
+        $this->setStartDay($startDay);
+        $this->position = $position;
+    }
+
+    public function addEmployee(EmployeeInterface $employee)
+    {
+        $this->employees[] = $employee;// TODO: Implement addEmployee() method.
+    }
+
+    public function getCountEmployees()
+    {
+        $count = 0;
+        foreach ($this->employees as $employee){
+            $count ++;
+        }
+        return $count;// TODO: Implement getCountEmployees() method.
+    }
+
+    public function getEmployees()
+    {
+       return $this->employees; // TODO: Implement getEmployees() method.
+    }
+
+    public function setPosition($position)
+    {
+        if ($this->checkPosition($position)) {
+            $this->position = $position;
+        }
+    }
+
+    public function getPosition()
+    {
+        return $this->position; // TODO: Implement getPosition() method.
+    }
+
+    public function setStartDay($startDay): DateTimeInterface
+    {
+        $date = new DateTime($startDay);
+        $date->format('Y-m-d');
+        return $this->startDay = $date;
+    }
+
+    public function getStartDay(): DateTimeInterface
+    {
+        return $this->startDay; // TODO: Implement getStartDay() method.
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setAge($age) {
+        if ($this->checkAge($age)) {
+            $this->age = $age;
+        }
+    }
+
+    public function getAge() {
+        return $this->age;
+    }
+
+    public function setSalary($salary) {
+        $this->salary = $salary + $salary * $this->workTime() * 0.05 + ($salary * $this->getCountEmployees() * 0.02);
+    }
+
+    public function getSalary() {
+        return $this->salary;
+    }
+
+    private function checkAge($age) {
+        if ($age >= 1 && $age < 100) {
+            return true;
+        } return false;
+    }
+
+    private function checkPosition($position) {
+        if ($position == "worker" || $position == "manager") {
+            return true;
+        }
+        return false;
+    }
+
+    private function workTime(){
+        $nowDay = new DateTime('now');
+        $interval = $this->startDay->diff($nowDay);
+        if ($interval->format('%y') < 2){
+            return 0;
+        }
+        else return $interval->format('%y') - 1;
+    }
+}
