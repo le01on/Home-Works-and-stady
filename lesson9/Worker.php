@@ -79,10 +79,12 @@ class Worker implements EmployeeInterface
         return false;
     }
 
-    public function workTime()
-    {
+    private function workTime(){
         $nowDay = new DateTime('now');
         $interval = $this->startDay->diff($nowDay);
-        return $interval->format('%Y');
+        if ($interval->format('%y') < 2){
+            return 0;
+        }
+        else return $interval->format('%y') - 1;
     }
 }

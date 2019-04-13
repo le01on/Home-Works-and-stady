@@ -26,11 +26,8 @@ class Manager implements EmployeeInterface, ManagerInterface
 
     public function getCountEmployees()
     {
-        $count = 0;
-        foreach ($this->employees as $employee){
-            $count ++;
-        }
-        return $count;// TODO: Implement getCountEmployees() method.
+       $result = count($this->employees);
+       return $result; // TODO: Implement getCountEmployees() method.
     }
 
     public function getEmployees()
@@ -80,7 +77,7 @@ class Manager implements EmployeeInterface, ManagerInterface
     }
 
     public function setSalary($salary) {
-        $this->salary = $salary + $salary * $this->workTime() * 0.05 + ($salary * $this->getCountEmployees() * 0.02);
+        $this->salary = $salary + ($salary * $this->workTime() * 0.05) + ($salary * $this->getCountEmployees() * 0.02);
     }
 
     public function getSalary() {

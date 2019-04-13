@@ -26,12 +26,3 @@ $manager2->setSalary(1800);
 echo "Менеджер " . $manager1->getName() .  ", зарплата - " . $manager1->getSalary() . ". Вподчинении  человек: " . $manager1->getCountEmployees() . ".";
 echo "<br>";
 echo "Менеджер " . $manager2->getName() .  ", зарплата - " . $manager2->getSalary() . ". Вподчинении  человек: " . $manager2->getCountEmployees() . ".";
-
-
-
-
-
-
-
-
-
