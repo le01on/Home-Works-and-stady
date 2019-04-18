@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once 'EmployeeInterface';
 require_once 'ManagerInterface';
 
@@ -11,26 +12,37 @@ class Manager implements EmployeeInterface, ManagerInterface
     private $startDay;
     private $employees = [];
 
-    public function __construct($name, $age, $startDay, $position)
+    public function __construct(string $name, int $age, DateTimeInterface $startDay, float $salary, string $position)
     {
         $this->name = $name;
         $this->setAge($age);
         $this->setStartDay($startDay);
+        $this->setSalary($salary);
         $this->position = $position;
     }
 
-    public function addEmployee(EmployeeInterface $employee)
+    public function addEmployee(EmployeeInterface $employee): void
     {
         $this->employees[] = $employee;// TODO: Implement addEmployee() method.
     }
 
-    public function getCountEmployees()
+    public function deleteWorker( $employee)
+    {
+        foreach ($this->employees as $key=>$value)
+        {
+            if($value == $employee){
+                unset($this->employees[$key]);
+            }
+        }
+    }
+
+    public function getCountEmployees(): int
     {
        $result = count($this->employees);
        return $result; // TODO: Implement getCountEmployees() method.
     }
 
-    public function getEmployees()
+    public function getEmployees(): array
     {
        return $this->employees; // TODO: Implement getEmployees() method.
     }
@@ -42,19 +54,19 @@ class Manager implements EmployeeInterface, ManagerInterface
         }
     }
 
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position; // TODO: Implement getPosition() method.
     }
 
     public function setStartDay($startDay): DateTimeInterface
     {
-        $date = new DateTime($startDay);
+        $date = new $startDay;
         $date->format('Y-m-d');
-        return $this->startDay = $date;
+        return $this->startDay = $startDay;
     }
 
-    public function getStartDay(): DateTimeInterface
+    public function getStartDay(): object
     {
         return $this->startDay; // TODO: Implement getStartDay() method.
     }
@@ -62,7 +74,7 @@ class Manager implements EmployeeInterface, ManagerInterface
     public function setName($name) {
         $this->name = $name;
     }
-    public function getName() {
+    public function getName(): string {
         return $this->name;
     }
 
@@ -76,12 +88,13 @@ class Manager implements EmployeeInterface, ManagerInterface
         return $this->age;
     }
 
-    public function setSalary($salary) {
-        $this->salary = $salary + ($salary * $this->workTime() * 0.05) + ($salary * $this->getCountEmployees() * 0.02);
+    public function setSalary($salary)
+    {
+        $this->salary = $salary;
     }
-
-    public function getSalary() {
-        return $this->salary;
+    public function getSalary(): float {
+        $firstSalary = $this->salary + ($this->salary * $this->workTime() * 0.05);
+        return floor($firstSalary + ($this->salary * $this->getCountEmployees() * 0.02));
     }
 
     private function checkAge($age) {
@@ -97,7 +110,8 @@ class Manager implements EmployeeInterface, ManagerInterface
         return false;
     }
 
-    private function workTime(){
+    private function workTime(): int
+    {
         $nowDay = new DateTime('now');
         $interval = $this->startDay->diff($nowDay);
         if ($interval->format('%y') < 2){

@@ -1,7 +1,8 @@
 <?php
+declare(strict_types = 1);
 interface ManagerInterface
 {
-    public function getEmployees();
-    public function addEmployee(EmployeeInterface $employee);
-    public function getCountEmployees();
+    public function getEmployees(): array;
+    public function addEmployee(EmployeeInterface $employee): void;
+    public function getCountEmployees(): int;
 }
