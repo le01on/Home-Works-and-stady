@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Городов</h1>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор <br> Государства</th>
+        <th>Идентификатор <br/> Города</th>
+        <th>Город</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($addressCities as $city) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $city->getId();?>
+        </td>
+        <td>
+            <?php echo $city->getCountryId();?>
+        </td>
+        <td>
+            <?php echo $city->getName();?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

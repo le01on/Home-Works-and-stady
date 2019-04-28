@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Улиц</h1>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор<br/> Улицы</th>
+        <th>Идентификатор <br/> Города</th>
+        <th>Тип</th>
+        <th>Название</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($addressStreets as $street) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $street->getId();?>
+        </td>
+        <td>
+            <?php echo $street->getCityId();?>
+        </td>
+        <td>
+            <?php echo $street->getType();?>
+        </td>
+        <td>
+            <?php echo $street->getName();?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

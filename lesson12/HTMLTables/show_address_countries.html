@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Государств</h1>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор</th>
+        <th>Государство</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($addressCountries as $country) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $country->getId();?>
+        </td>
+        <td>
+            <?php echo $country->getCountry();?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>
