@@ -16,7 +16,6 @@
         <th>Номер тел.</th>
         <th>Идентификатор <br>Пользователя</th>
         <th>Идентификатор <br>Адреса</th>
-<!--        <th>Действие</th>-->
     </tr>
     <?php $i = 0;?>
     <?php foreach($users as $user) {  ?>
@@ -42,10 +41,6 @@
         <td>
         <?php echo $user->getAddressStreetId();?>
         </td>
-<!--        <td>-->
-<!--            <a href="edit_user.php?id=<?php echo $user->getId(); ?>">Редактировать</a><br>-->
-<!--            <a href="delete_user.php?id=<?php echo $user->getId(); ?>">Удалить</a><br>-->
-<!--        </td>-->
     </tr>
     <?php } ?>
 </table>

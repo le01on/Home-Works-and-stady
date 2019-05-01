@@ -5,16 +5,22 @@
     <title>Добавить пользователя</title>
 </head>
 <body>
+<h3> Введите в полях новые данные которые нужно изменить</h3>
 
-<form action="edit_user.php" method="post">
-    <input type="text" required="required" name="firstName" placeholder="Имя"><br/>
-    <input type="text" required="required" name="lastName" placeholder="Фамилия"><br/>
-    <input type="email" required="required" name="email" placeholder="Почта"><br/>
-    <input type="text" name="phone" placeholder="Телефон"><br/>
-    <input type="password" required="required" name="password" placeholder="Пароль"><br/>
-    <input type="password" required="required" name="passwordConfirm" placeholder="Подтвердить пароль"><br/>
-    <input type="submit">
+<form action="edit.php" method="post">
+    <p><input type="text" required="required" name="firstName" placeholder="Имя"
+              value="<?php echo $user->getLastName(); ?>"> Имя</p>
+    <p><input type="text" required="required" name="lastName" placeholder="Фамилия"
+           value="<?php echo $user->getFirstName(); ?>"> Фамилия</p>
+    <p><input type="email" required="required" name="email" placeholder="Почта"
+           value="<?php echo $user->getEmail(); ?>"> email</p>
+    <p><input type="text" name="phone" placeholder="Телефон"
+           value="<?php echo $user->getPhone(); ?>"> Телефон</p>
+    <p><input type="text" required="required" name="password" placeholder="Пароль"
+           value="<?php echo $user->getPassword(); ?>"> Изменить пароль</p>
+    <p><input type="text" required="required" name="passwordConfirm" placeholder="Подтвердить пароль"
+           value="<?php echo $user->getPassword(); ?>"> Повторите новый пароль</p><br/>
+    <input type="submit" value="Изменить">
 </form>
-
 </body>
 </html>

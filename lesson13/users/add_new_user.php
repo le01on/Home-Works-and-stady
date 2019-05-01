@@ -16,6 +16,9 @@
             && $_POST['password'] === $_POST['passwordConfirm']
         ) {
             $newUser->setPassword($_POST['password']);
+        } else {
+            echo "Пароли не совпадают! Вернитесь на страницу создания пользователя";
+            exit;
         }
 
         $pdo = PDOConnection::getPDO();
