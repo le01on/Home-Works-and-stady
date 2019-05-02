@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Категорий</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_category.php" >Добавить новую категорию</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff" >
+        <th>Номер</th>
+        <th>Идентификатор <br> Родителя <br> категории</th>
+        <th>Название</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($categories as $category) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $category->getParentId();?>
+        </td>
+        <td>
+            <?php echo $category->getName();?>
+        </td>
+        <td>
+            <a href="edit_category.php?id=<?php echo $category->getId(); ?>">Редактировать</a><br>
+            <a href="delete_category.php?id=<?php echo $category->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

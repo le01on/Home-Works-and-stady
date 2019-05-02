@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Пользователей по ролях</h1>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор</th>
+        <th>Пользователь</th>
+        <th>Ключ</th>
+        <th>Дата создания</th>
+        <th>Дата <br>редактирования</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($roles as $role) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $role->getId();?>
+        </td>
+        <td>
+            <?php echo $role->getName();?>
+        </td>
+        <td>
+            <?php echo $role->getKey();?>
+        </td>
+        <td>
+            <?php echo $role->getCreateAt();?>
+        </td>
+        <td>
+            <?php echo $role->getUpdateAt();?>
+        </td>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

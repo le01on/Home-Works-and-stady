@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Всех Городов</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_city.php" >Добавить новый город</a><br>
+</br>
+<table border="1">
+    <tr bgcolor="#f0f8ff" >
+        <th>Номер</th>
+        <th>Идентификатор <br> Страны</th>
+        <th>Город</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($cities as $city) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $city->getCountryId();?>
+        </td>
+        <td>
+            <?php echo $city->getName();?>
+        </td>
+        <td>
+            <a href="edit_city.php?id=<?php echo $city->getId(); ?>">Редактировать</a><br>
+            <a href="delete_city.php?id=<?php echo $city->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

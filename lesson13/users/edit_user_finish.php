@@ -21,6 +21,9 @@
             && $_POST['password'] === $_POST['passwordConfirm']
         ) {
             $user->setPassword($_POST['password']);
+        } else {
+            echo "Пароли не совпадают! Вернитесь на страницу редактирования пользователя";
+            exit;
         }
     }
 

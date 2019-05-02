@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show streets</title>
+</head>
+<body>
+<h1>Список Улиц</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_street.php" >Добавить новую улицу</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор <br>Города</th>
+        <th>Тип</th>
+        <th>Название</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($addressStreets as $street) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $street->getCityId();?>
+        </td>
+        <td>
+            <?php echo $street->getType();?>
+        </td>
+        <td>
+            <?php echo $street->getName();?>
+        </td>
+        <td>
+            <a href="edit_street.php?id=<?php echo $street->getId(); ?>">Редактировать</a><br>
+            <a href="delete_street.php?id=<?php echo $street->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

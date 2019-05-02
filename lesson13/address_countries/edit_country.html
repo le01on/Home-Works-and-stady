@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать Страну</title>
+</head>
+<body>
+<h3> Введите в поле новые данные которые нужно изменить</h3>
+
+<form action="edit_country_finish.php" method="post">
+    <p><input type="text" required="required" name="country" placeholder="Страна"
+              value="<?php echo $country->getCountry(); ?>"> Cтрана</p>
+    <input type="submit" value="Изменить">
+</form>
+</body>
+</html>

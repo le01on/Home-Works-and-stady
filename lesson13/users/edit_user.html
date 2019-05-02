@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить пользователя</title>
+    <title>Редактировать пользователя</title>
 </head>
 <body>
 <h3> Введите в полях новые данные которые нужно изменить</h3>
 
-<form action="edit.php" method="post">
+<form action="edit_user_finish.php" method="post">
     <p><input type="text" required="required" name="firstName" placeholder="Имя"
               value="<?php echo $user->getLastName(); ?>"> Имя</p>
     <p><input type="text" required="required" name="lastName" placeholder="Фамилия"

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать категорию</title>
+</head>
+<body>
+<h3> Введите в поле новые данные которые нужно изменить</h3>
+
+<form action="edit_category_finish.php" method="post">
+    <p><input type="text" required="required" name="name" placeholder="Категория"
+              value="<?php echo $category->getName(); ?>"> Категория</p>
+    <p><input type="text" required="required" name="parent" placeholder="Родительская категория"
+              value="<?php echo $category->getParentId(); ?>">Родительская категория</p>
+    <input type="submit" value="Изменить">
+</form>
+</body>
+</html>
