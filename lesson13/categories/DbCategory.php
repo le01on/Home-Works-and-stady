@@ -11,7 +11,7 @@
             $this->pdo = $pdo;
         }
 
-        public function create(Categories $category)
+        public function create(Options $category)
         {
             $sql = 'INSERT INTO categories (`name`, `parent_id`)
         value (:name, :parent_id)';

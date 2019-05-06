@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show user</title>
+    <title>Show user roles</title>
 </head>
 <body>
 <h1>Список Пользователей по ролях</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_user_roles.php" >Добавить новую роль</a><br>
+<br>
 <table border="1">
     <tr bgcolor="#f0f8ff">
         <th>Номер</th>
@@ -14,9 +19,10 @@
         <th>Ключ</th>
         <th>Дата создания</th>
         <th>Дата <br>редактирования</th>
+        <th>Действие</th>
     </tr>
     <?php $i = 0;?>
-    <?php foreach($roles as $role) {  ?>
+    <?php foreach($userRoles as $role) {  ?>
     <tr align="right">
         <td>
             <?php echo ++$i;?>
@@ -36,6 +42,9 @@
         <td>
             <?php echo $role->getUpdateAt();?>
         </td>
+        <td>
+            <a href="edit_user_roles.php?id=<?php echo $role->getId(); ?>">Редактировать</a><br>
+            <a href="delete_user_roles.php?id=<?php echo $role->getId(); ?>">Удалить</a><br>
         </td>
     </tr>
     <?php } ?>

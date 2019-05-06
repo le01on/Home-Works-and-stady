@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить Товар</title>
+</head>
+<body>
+
+<form action="add_new_products.php" method="post">
+    <p></p><input type="text" required="required" name="name" >Название<br/></p>
+    <p><select type="number" required="required" name="countryId" ><br/>
+        <option>1</option>
+        <option>2</option></select>Код страны</p>
+    <p><select type="number" required="required" name="typeId" ><br/>
+        <option>1</option>
+        <option>2</option></select>Идентификатор типа товара</p>
+    <p><select type="number" required="required" name="categoryId"><br/>
+            <option>1</option>
+            <option>2</option></select>Идентификатор категории товара</p>
+    <p><input type="text" required="required" name="description">Описание</p>
+    <p><input type="number" step="0.01" required="required" name="price" >Цена</p>
+    <input type="submit" value="Создать">
+</form>
+
+</body>
+</html>

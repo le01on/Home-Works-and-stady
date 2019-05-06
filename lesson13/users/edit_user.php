@@ -7,7 +7,7 @@ require_once '../PDOConnection.php';
     $pdo = PDOConnection::getPDO();
     $sql = 'SELECT * FROM users WHERE `id`= :id';
     $sth = $pdo->prepare($sql);
-    $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Products');
     $sth->execute([':id' => $id]);
     $user = $sth->fetch();
 require_once 'edit_user.html';

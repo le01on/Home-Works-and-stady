@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show products</title>
+</head>
+<body>
+<h1>Список  Товаров</h1>
+<style>
+      .a {  background: deeppink; border: 50px}
+</style>
+ <a class="a" href="add_new_products.php" >Добавить новый товар</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff" >
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Код <br>страны</th>
+        <th>Идентификатор <br>типа <br>товара</th>
+        <th>Идентификатор <br>категории<br> товара</th>
+        <th>Описание</th>
+        <th>Цена товара</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($products as $product) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $product->getName();?>
+        </td>
+        <td>
+            <?php echo $product->getCountryId();?>
+        </td>
+        <td>
+            <?php echo $product->getTypeId();?>
+        </td>
+        <td>
+            <?php echo $product->getCategoryId();?>
+        </td>
+        <td>
+            <?php echo $product->getDescription();?>
+        </td>
+        <td>
+            <?php echo $product->getPrice();?>
+        </td>
+        <td>
+            <a href="edit_products.php?id=<?php echo $product->getId(); ?>">Редактировать</a><br>
+            <a href="delete_products.php?id=<?php echo $product->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

@@ -7,7 +7,7 @@
     $pdo = PDOConnection::getPDO();
     $sql = 'SELECT * FROM address_cities WHERE `id`= :id';
     $sth = $pdo->prepare($sql);
-    $sth->setFetchMode(PDO::FETCH_CLASS, 'Categories');
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Options');
     $sth->execute([':id' => $id]);
     $city = $sth->fetch();
     require_once 'edit_city.html';

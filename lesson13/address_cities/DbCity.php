@@ -11,7 +11,7 @@
             $this->pdo = $pdo;
         }
 
-        public function create(Categories $city)
+        public function create(Options $city)
         {
             $sql = 'INSERT INTO address_cities (`name`, `country_id`)
         value (:name, :country_id)';

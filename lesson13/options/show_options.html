@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<h1>Список Действий</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_options.php" >Добавить новое действие</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff" >
+        <th>Номер</th>
+        <th>Идентификатор <br> типа <br> действия</th>
+        <th>Действие</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($options as $option) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $option->getTypeId();?>
+        </td>
+        <td>
+            <?php echo $option->getName();?>
+        </td>
+        <td>
+            <a href="edit_options.php?id=<?php echo $option->getId(); ?>">Редактировать</a><br>
+            <a href="delete_options.php?id=<?php echo $option->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?php
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/lesson12/traits/SnakeCaseCamelCase.php');
+require_once '../traits/SnakeCaseCamelCase.php';
 
 class UserRoles
 {

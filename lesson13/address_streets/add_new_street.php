@@ -10,7 +10,7 @@
 
 
         $pdo = PDOConnection::getPDO();
-        $dbStreet = new DbStreet($pdo);
+        $dbStreet = new DbUserRoles($pdo);
         $dbStreet->create($newStreet);
         header('Location: /lesson13/address_streets/streets.php');
     }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show types</title>
+</head>
+<body>
+<h1>Список Типов товаров</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_type.php" >Добавить новый тип товаров</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор</th>
+        <th>Тип<br> товара</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($types as $type) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $type->getId();?>
+        </td>
+        <td>
+            <?php echo $type->getName();?>
+        </td>
+        <td>
+            <a href="edit_type.php?id=<?php echo $type->getId(); ?>">Редактировать</a><br>
+            <a href="delete_type.php?id=<?php echo $type->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

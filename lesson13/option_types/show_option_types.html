@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show option_types</title>
+</head>
+<body>
+<h1>Список Типов действий</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_option_type.php" >Добавить новый тип действия</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор</th>
+        <th>Тип<br> действия</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($optionTypes as $type) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $type->getId();?>
+        </td>
+        <td>
+            <?php echo $type->getName();?>
+        </td>
+        <td>
+            <a href="edit_option_type.php?id=<?php echo $type->getId(); ?>">Редактировать</a><br>
+            <a href="delete_option_type.php?id=<?php echo $type->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

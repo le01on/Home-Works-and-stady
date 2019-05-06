@@ -8,4 +8,4 @@
     $sth->execute([
         ':id' => $id
     ]);
-    require_once 'delete_country.html';
+    header('Location: /lesson13/address_countries/countries.php');

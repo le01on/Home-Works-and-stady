@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать Улицу</title>
+</head>
+<body>
+<h3> Введите в поле новые данные которые нужно изменить</h3>
+
+<form action="edit_user_roles_finish.php" method="post">
+    <p><input type="text" required="required" name="street" placeholder="Название"
+              value="<?php echo $street->getName(); ?>"> Название</p>
+    <p><input type="text" required="required" name="type" placeholder="Тип"
+              value="<?php echo $street->getType(); ?>"> Тип</p>
+    <input type="submit" value="Изменить">
+</form>
+</body>
+</html>

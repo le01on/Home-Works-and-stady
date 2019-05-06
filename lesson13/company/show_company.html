@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show company</title>
+</head>
+<body>
+<h1>Список Производителей</h1>
+<style>
+    .a {  background: deeppink; border: 50px}
+</style>
+<a class="a" href="add_new_company.php" >Добавить нового Производителя</a><br>
+<br>
+<table border="1">
+    <tr bgcolor="#f0f8ff">
+        <th>Номер</th>
+        <th>Идентификатор</th>
+        <th>Производитель</th>
+        <th>Действие</th>
+    </tr>
+    <?php $i = 0;?>
+    <?php foreach($company as $compan) {  ?>
+    <tr align="right">
+        <td>
+            <?php echo ++$i;?>
+        </td>
+        <td>
+            <?php echo $compan->getId();?>
+        </td>
+        <td>
+            <?php echo $compan->getName();?>
+        </td>
+        <td>
+            <a href="edit_company.php?id=<?php echo $compan->getId(); ?>">Редактировать</a><br>
+            <a href="delete_company.php?id=<?php echo $compan->getId(); ?>">Удалить</a><br>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</body>
+</html>

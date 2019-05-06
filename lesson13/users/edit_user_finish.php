@@ -8,7 +8,7 @@
         $pdo = PDOConnection::getPDO();
         $sql = 'SELECT * FROM users WHERE `id`= :id';
         $sth = $pdo->prepare($sql);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Products');
         $sth->execute([':id' => $id]);
         $user = $sth->fetch();
         !key_exists('firstName', $_POST) ?: $user->setFirstName($_POST['firstName']);
@@ -48,6 +48,4 @@
         ':id' => $id
     ]);
 
-    echo "Пользователь изменен!" . "<br>";
-    ?>
-    <a href="users.php">Вернуться к списку всех пользователей</a>
+    header('Location: /lesson13/users/users.php');

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать товар</title>
+</head>
+<body>
+<h3> Введите в полях новые данные которые нужно изменить</h3>
+
+<form action="edit_products_finish.php" method="post">
+    <p><input type="text" required="required" name="name" placeholder="Название"
+              value="<?php echo $products->getName(); ?>"> Название</p>
+    <p><input type="text" required="required" name="description" placeholder="Описание"
+           value="<?php echo $products->getDescription(); ?>"> Описание</p>
+    <p><input type="number" step="0.01" required="required" name="price" placeholder="Цена"
+           value="<?php echo $products->getPrice(); ?>"> Цена</p>
+        <input type="submit" value="Изменить">
+</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать тип товара</title>
+</head>
+<body>
+<h3> Введите в поле новые данные которые нужно изменить</h3>
+
+<form action="edit_type_finish.php" method="post">
+    <p><input type="text" required="required" name="type" placeholder="Тип товара"
+              value="<?php echo $types->getName(); ?>"> Тип</p>
+    <input type="submit" value="Изменить">
+</form>
+</body>
+</html>

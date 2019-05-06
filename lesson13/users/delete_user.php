@@ -9,4 +9,4 @@ require_once '../PDOConnection.php';
     $sth->execute([
         ':id' => $id
     ]);
-require_once 'delete_user.html';
+    header('Location: /lesson13/users/users.php');
