@@ -8,7 +8,7 @@
         $pdo = PDOConnection::getPDO();
         $sql = 'SELECT * FROM categories WHERE `id`= :id';
         $sth = $pdo->prepare($sql);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Options');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Categories');
         $sth->execute([':id' => $id]);
         $category = $sth->fetch();
         !key_exists('name', $_POST) ?: $category->setName($_POST['name']);

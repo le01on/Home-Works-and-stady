@@ -7,7 +7,7 @@
         {
             $this->pdo = $pdo;
         }
-        public function create(Products $user)
+        public function create(User $user)
         {
             $sql = 'INSERT INTO users (`first_name`, `last_name`, `email`, `phone`, `password`, `role_id`, `address_street_id`)
         value (:first_name, :last_name, :email, :phone, :password, :role_id, :address_street_id)';

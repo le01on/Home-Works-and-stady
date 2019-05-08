@@ -22,7 +22,4 @@
         ':country' => $country->getCountry(),
         ':id' => $id
     ]);
-
-    echo "Страна изменена!" . "<br>";
-?>
-<a href="countries.php">Вернуться к списку всех стран</a>
+    header('Location: /lesson13/address_countries/countries.php');

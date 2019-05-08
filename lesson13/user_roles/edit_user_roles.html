@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Редактировать Улицу</title>
+    <title>Редактировать роль</title>
 </head>
 <body>
 <h3> Введите в поле новые данные которые нужно изменить</h3>
 
 <form action="edit_user_roles_finish.php" method="post">
-    <p><input type="text" required="required" name="street" placeholder="Название"
-              value="<?php echo $street->getName(); ?>"> Название</p>
-    <p><input type="text" required="required" name="type" placeholder="Тип"
-              value="<?php echo $street->getType(); ?>"> Тип</p>
+    <p><input type="text" required="required" name="name" placeholder="Название"
+              value="<?php echo $userRoles->getName(); ?>"> Название</p>
+    <p><input type="text" required="required" name="key" placeholder="Ключ"
+              value="<?php echo $userRoles->getKey(); ?>"> Ключ</p>
     <input type="submit" value="Изменить">
 </form>
 </body>

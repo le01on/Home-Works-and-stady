@@ -9,4 +9,4 @@
     $sth->execute([
         ':id' => $id
     ]);
-    header('Location: /lesson13/address_cities/categories.php');
+    header('Location: /lesson13/address_cities/cities.php');

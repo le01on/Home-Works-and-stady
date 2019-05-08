@@ -7,7 +7,7 @@
     $pdo = PDOConnection::getPDO();
     $sql = 'SELECT * FROM types WHERE `id`= :id';
     $sth = $pdo->prepare($sql);
-    $sth->setFetchMode(PDO::FETCH_CLASS, 'Company');
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Types');
     $sth->execute([':id' => $id]);
     $types = $sth->fetch();
     require_once 'edit_type.html';

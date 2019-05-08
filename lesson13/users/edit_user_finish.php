@@ -8,7 +8,7 @@
         $pdo = PDOConnection::getPDO();
         $sql = 'SELECT * FROM users WHERE `id`= :id';
         $sth = $pdo->prepare($sql);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Products');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
         $sth->execute([':id' => $id]);
         $user = $sth->fetch();
         !key_exists('firstName', $_POST) ?: $user->setFirstName($_POST['firstName']);

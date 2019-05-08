@@ -1,13 +1,13 @@
 <?php
-    require_once 'AddressStreets.php';
+    require_once 'UserRoles.php';
     require_once '../PDOConnection.php';
     session_start();
     $id = $_GET['id'];
     $_SESSION['id'] = $id;
     $pdo = PDOConnection::getPDO();
-    $sql = 'SELECT * FROM address_streets WHERE `id`= :id';
+    $sql = 'SELECT * FROM user_roles WHERE `id`= :id';
     $sth = $pdo->prepare($sql);
-    $sth->setFetchMode(PDO::FETCH_CLASS, 'AddressStreets');
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'UserRoles');
     $sth->execute([':id' => $id]);
-    $street = $sth->fetch();
+    $userRoles = $sth->fetch();
     require_once 'edit_user_roles.html';

@@ -5,7 +5,7 @@
     require_once '../PDOConnection.php';
 
     if (!empty($_POST)) {
-        $newUser = new Products();
+        $newUser = new User();
         !key_exists('firstName', $_POST) ?: $newUser->setFirstName($_POST['firstName']);
         !key_exists('lastName', $_POST) ?: $newUser->setLastName($_POST['lastName']);
         !key_exists('email', $_POST) ?: $newUser->setEmail($_POST['email']);
@@ -22,7 +22,7 @@
         }
 
         $pdo = PDOConnection::getPDO();
-        $dbUser = new DbProducts($pdo);
+        $dbUser = new DbUser($pdo);
         $dbUser->create($newUser);
         header('Location: /lesson13/users/users.php');
     }

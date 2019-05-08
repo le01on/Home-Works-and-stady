@@ -7,7 +7,7 @@
         {
             $this->pdo = $pdo;
         }
-        public function create(Company $types)
+        public function create(Types $types)
         {
             $sql = 'INSERT INTO types (`name`)
         value (:name)';

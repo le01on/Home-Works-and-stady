@@ -7,7 +7,7 @@
     $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
     $sql = 'SELECT * FROM categories';
     $sht = $pdo->prepare($sql);
-    $sht->setFetchMode(PDO::FETCH_CLASS, 'Options');
+    $sht->setFetchMode(PDO::FETCH_CLASS, 'Categories');
     $sht->execute();
     $categories = $sht->fetchAll();
     require_once 'show_categories.html';

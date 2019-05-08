@@ -5,13 +5,13 @@
     require_once '../PDOConnection.php';
 
     if (!empty($_POST)) {
-        $newCity = new Options();
+        $newCity = new AddressCities();
         !key_exists('Name', $_POST) ?: $newCity->setName($_POST['Name']);
 
 
         $pdo = PDOConnection::getPDO();
-        $dbCity = new DbOptions($pdo);
+        $dbCity = new DbCity($pdo);
         $dbCity->create($newCity);
-        header('Location: /lesson13/address_cities/categories.php');
+        header('Location: /lesson13/address_cities/cities.php');
     }
     require_once 'add_new_city.html';

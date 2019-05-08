@@ -8,7 +8,7 @@
         $pdo = PDOConnection::getPDO();
         $sql = 'SELECT * FROM address_cities WHERE `id`= :id';
         $sth = $pdo->prepare($sql);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Options');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'AddressCities');
         $sth->execute([':id' => $id]);
         $city = $sth->fetch();
         !key_exists('city', $_POST) ?: $city->setName($_POST['city']);
@@ -22,4 +22,4 @@
         ':name' => $city->getName(),
         ':id' => $id
     ]);
-    header('Location: /lesson13/address_cities/categories.php');
+    header('Location: /lesson13/address_cities/cities.php');

@@ -1,29 +1,29 @@
 <?php
     require_once '../PDOConnection.php';
-    require_once 'AddressStreets.php';
+    require_once 'UserRoles.php';
     session_start();
     $id = $_SESSION['id'];
 
     if (!empty($_POST)) {
         $pdo = PDOConnection::getPDO();
-        $sql = 'SELECT * FROM address_streets WHERE `id`= :id';
+        $sql = 'SELECT * FROM user_roles WHERE `id`= :id';
         $sth = $pdo->prepare($sql);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'AddressStreets');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'UserRoles');
         $sth->execute([':id' => $id]);
-        $street = $sth->fetch();
-        !key_exists('street', $_POST) ?: $street->setName($_POST['street']);
-        !key_exists('type', $_POST) ?: $street->setType($_POST['type']);
+        $userRoles = $sth->fetch();
+        !key_exists('name', $_POST) ?: $userRoles->setName($_POST['name']);
+        !key_exists('key', $_POST) ?: $userRoles->setKey($_POST['key']);
     }
 
-    $sql = 'UPDATE address_streets SET
+    $sql = 'UPDATE user_roles SET
     `name` = :name,
-    `type` = :type
+    `key` = :key
        WHERE id = :id';
     $sth = $pdo->prepare($sql);
     $sth->execute([
-        ':name' => $street->getName(),
-        ':type' => $street->getType(),
+        ':name' => $userRoles->getName(),
+        ':key' => $userRoles->getKey(),
         ':id' => $id
     ]);
-    header('Location: /lesson13/address_streets/streets.php');
+    header('Location: /lesson13/user_roles/user_roles.php');
 
