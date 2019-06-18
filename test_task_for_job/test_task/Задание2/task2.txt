@@ -1,0 +1,33 @@
+1.
+CREATE TABLE `new_bd`.`friends` ( `id` INT(6) NOT NULL AUTO_INCREMENT ,
+`name` VARCHAR(25) NOT NULL ,
+`balance` INT(8) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `new_bd`.`loan` ( `id` INT(6) NOT NULL AUTO_INCREMENT ,
+`loan` INT(8) NULL , `borrower_name` VARCHAR(25) NOT NULL ,
+`creditor_name` VARCHAR(25) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE INDEX (`friends_name_index`)
+	ON `friends` (`name`);
+
+alter table loan
+add constraint loan_friends_name_fk
+foreign key (borrower_name) references friends (name);
+
+alter table loan
+add constraint loan_friends_name_fk_2
+foreign key (creditor_name) references friends (name);
+
+
+2.
+INSERT INTO `loan` (`loan`, `borrower_name`, `creditor_name`) VALUES ('120', 'Ivan', 'Vasya');
+
+ 3.
+ SELECT (SELECT SUM(loan) FROM `loan` WHERE borrower_name='Ivan') - (SELECT SUM(loan) FROM `loan` WHERE borrower_name='Vasya') AS balance
+
+4.
+ SELECT (SELECT `balance` FROM friends WHERE name='Ivan') - ((SELECT SUM(loan) FROM `loan` WHERE borrower_name='Ivan')
+ - (SELECT SUM(loan) FROM `loan` WHERE borrower_name='Vasya')) AS new_balance
+
+5.
+SELECT * FROM `loan` WHERE creditor_name='Ivan'

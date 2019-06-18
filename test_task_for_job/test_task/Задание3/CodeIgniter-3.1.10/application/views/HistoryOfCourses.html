@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>История Курсов валют</title>
+</head>
+<body>
+<h1>Список Курсов Валют</h1>
+
+<br>
+<table border="1">
+	<tr bgcolor="#f0f8ff" >
+		<th>Номер</th>
+		<th>Базовая <br>Валюта</th>
+		<th>Валюта</th>
+		<th>Покупка</th>
+		<th>Продажа</th>
+		<th>Дата <br>Изменения</th>
+	</tr>
+	<?php $i = 0;?>
+	<?php $courses = $this->HistoryCourses->history(); ?>
+	<?php foreach($courses as $course) {  ?>
+	<tr align="right">
+		<td>
+			<?php echo ++$i;?>
+		</td>
+		<td>
+			<?php echo $course['base_ccy'];?>
+		</td>
+		<td>
+			<?php echo  $course['ccy'];?>
+		</td>
+		<td>
+			<?php echo  $course['buy'];?>
+		</td>
+		<td>
+			<?php echo  $course['sale'];?>
+		</td>
+		<td>
+			<?php echo  $course['date'];?>
+		</td>
+	</tr>
+	<?php } ?>
+</table>
+<br>
+<style>
+	.a {  background: #aaffaa; border: 50px}
+</style>
+<a class="a" href="/course" >Вернуться к курсу</a><br>
+</body>
+</html>
