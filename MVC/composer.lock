@@ -22,7 +22,7 @@
             },
             "require": {
                 "fig/http-message-util": "^1.1",
-                "php": "^5.3.0|^7.0"
+                "php": "^5.3.0|^7.2"
             },
             "require-dev": {
                 "malukenho/docheader": "^0.1.5",
@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "9c22e29b271426c3462f1e53777d1e9a1f16d84c"
+                "reference": "17ec59c730888541191c63927791523be09fe3f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/9c22e29b271426c3462f1e53777d1e9a1f16d84c",
-                "reference": "9c22e29b271426c3462f1e53777d1e9a1f16d84c",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/17ec59c730888541191c63927791523be09fe3f7",
+                "reference": "17ec59c730888541191c63927791523be09fe3f7",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "riak",
                 "xcache"
             ],
-            "time": "2019-03-17T19:17:10+00:00"
+            "time": "2019-05-24T17:46:08+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -148,12 +148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "06d1d8c377dd687d88d14a376dba9d316633f137"
+                "reference": "0152fbf4d72a7889996bfd7dc7ccc4bc678f4a15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/06d1d8c377dd687d88d14a376dba9d316633f137",
-                "reference": "06d1d8c377dd687d88d14a376dba9d316633f137",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0152fbf4d72a7889996bfd7dc7ccc4bc678f4a15",
+                "reference": "0152fbf4d72a7889996bfd7dc7ccc4bc678f4a15",
                 "shasum": ""
             },
             "require": {
@@ -164,11 +164,11 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "^6.0",
-                "jetbrains/phpstorm-stubs": "^2018.1.2",
+                "jetbrains/phpstorm-stubs": "^2019.1",
                 "phpstan/phpstan": "^0.11.3",
-                "phpunit/phpunit": "^8.1.5",
-                "symfony/console": "^2.0.5|^3.0|^4.0",
-                "symfony/phpunit-bridge": "^3.4.5|^4.0.5"
+                "phpunit/phpunit": "^8.2.1",
+                "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
+                "symfony/phpunit-bridge": "^3.4.5|^4.0.5|^5.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -233,7 +233,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2019-05-17T13:57:45+00:00"
+            "time": "2019-06-17T21:31:07+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "45e6c7bc79b5f46e601236ebd6e69623e528d312"
+                "reference": "e05ae70c633f3ada0f699b4628a2995b5dec1c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/45e6c7bc79b5f46e601236ebd6e69623e528d312",
-                "reference": "45e6c7bc79b5f46e601236ebd6e69623e528d312",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/e05ae70c633f3ada0f699b4628a2995b5dec1c26",
+                "reference": "e05ae70c633f3ada0f699b4628a2995b5dec1c26",
                 "shasum": ""
             },
             "require": {
@@ -309,7 +309,7 @@
                 "event system",
                 "events"
             ],
-            "time": "2019-03-17T19:24:10+00:00"
+            "time": "2019-05-24T18:17:40+00:00"
         },
         {
             "name": "fig/http-message-util",

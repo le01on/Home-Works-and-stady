@@ -1,0 +1,118 @@
+easy_admin:
+    formats:
+        date:     'd/m/Y'
+        datetime: 'd/m/Y'
+    design:
+        menu:
+            - { label: 'Homepage', url: '/', rel: 'index' }
+            - label: 'Product'
+              children: ['Product', 'ProductCategory']
+            - label: 'Order'
+              children: ['Order']
+            - label: 'User'
+              children: ['User']
+            - label: 'BidHistory'
+              children: ['BidHistory']
+    entities:
+
+        Product:
+            class: App\Entity\Product
+            label: 'Лот'
+            list:
+                fields:
+                    - {property: 'id' , label: 'ID'}
+                    - {property: 'code' , label: 'Code', type: 'string'}
+                    - {property: 'about' , label: 'Name'}
+                    - {property: 'category.name' , label: 'Category'}
+                    - { property: 'startAt', format: 'd/m/Y'}
+                    - { property: 'finishAt', format: 'd/m/Y'}
+            form:
+                fields:
+                    - { type: 'group' , label: 'Basic Information' }
+                    - 'name'
+                    - 'code'
+                    - 'category'
+                    - 'owner'
+                    - 'price'
+                    - { type: 'group', label: 'About Information', icon: 'info' }
+                    - 'about'
+                    - { property: 'startAt'}
+                    - { property: 'finishAt'}
+                    - { type: 'group', label: 'Photo Information', icon: 'photo' }
+                    - 'photo'
+
+            templates:
+                edit: 'admin/Product/edit.html.twig'
+                new: 'admin/Product/new.html.twig'
+
+        ProductCategory:
+            class: App\Entity\ProductCategory
+            label: 'Категория'
+            list:
+                dql_filter: 'entity.parent IS NULL'
+                fields: ['id', 'name']
+            form:
+                fields: ['name']
+
+        User:
+            class: App\Entity\User
+            label: 'User'
+            list:
+                fields:
+                    - {property: 'id' , label: 'ID'}
+                    - {property: 'firstName' , label: 'First name', type: 'string'}
+                    - {property: 'lastName' , label: 'Last name', type: 'string'}
+                    - {property: 'email' , label: 'email'}
+                    - {property: 'password' , label: 'password'}
+                    - {property: 'phone' , label: 'phone'}
+                    - {property: 'address' , label: 'address'}
+                    - {property: 'role' , label: 'role'}
+                    - {property: 'status' , label: 'status'}
+                    - {property: 'identificCode' , label: 'identificCode'}
+                    - {property: 'dateRegistration' , label: 'dateRegistration'}
+                form:
+                    fields:
+                        - 'firstName'
+                        - 'lastName'
+                        - 'email'
+                        - 'password'
+                        - 'address'
+                        - 'role'
+                        - 'status'
+                        - 'identificCode'
+                        - 'dateRegistration'
+                templates:
+                    edit: 'admin/User/edit.html.twig'
+                    new: 'admin/User/new.html.twig'
+        BidHistory:
+            class: App\Entity\BidHistory
+            label: 'BidHistory'
+            list:
+                fields:
+                    - {property: 'id' , label: 'ID'}
+                    - {property: 'bidTime' , label: 'bidTime'}
+                    - {property: 'bidAmount' , label: 'bidAmount'}
+                form:
+                    fields:
+                        - 'bidTime'
+                        - 'bidAmount'
+                templates:
+                    edit: 'admin/User/edit.html.twig'
+                    new: 'admin/User/new.html.twig'
+        Order:
+            class: App\Entity\Order
+            label: 'Order'
+            list:
+                fields:
+                    - {property: 'id' , label: 'ID'}
+                    - {property: 'price' , label: 'price'}
+                    - {property: 'paymentDetails' , label: 'paymentDetails'}
+                    - {property: 'status' , label: 'status'}
+                form:
+                    fields:
+                        - 'price'
+                        - 'paymentDetails'
+                        - 'status'
+                templates:
+                    edit: 'admin/User/edit.html.twig'
+                    new: 'admin/User/new.html.twig'

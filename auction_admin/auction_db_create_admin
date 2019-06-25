@@ -1,0 +1,211 @@
+-- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
+--
+-- Host: localhost    Database: auction_db
+-- ------------------------------------------------------
+-- Server version	5.7.26-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bid_history`
+--
+
+DROP TABLE IF EXISTS `bid_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bid_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `bid_time` datetime NOT NULL,
+  `bid_amount` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `bid_history_user_id_fk` (`user_id`),
+  KEY `fk_bid_history_product1_idx` (`product_id`),
+  CONSTRAINT `FK_79922F584584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `FK_79922F58A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bid_history`
+--
+
+LOCK TABLES `bid_history` WRITE;
+/*!40000 ALTER TABLE `bid_history` DISABLE KEYS */;
+INSERT INTO `bid_history` VALUES (2,6,2,'2014-01-01 00:00:00','1500');
+/*!40000 ALTER TABLE `bid_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migration_versions`
+--
+
+DROP TABLE IF EXISTS `migration_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migration_versions` (
+  `version` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `executed_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migration_versions`
+--
+
+LOCK TABLES `migration_versions` WRITE;
+/*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
+INSERT INTO `migration_versions` VALUES ('20190619151938','2019-06-22 11:47:43'),('20190624095247','2019-06-24 09:55:13'),('20190624110621','2019-06-24 11:07:12');
+/*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `price` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_details` text COLLATE utf8mb4_unicode_ci,
+  `status` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_F52993984584665A` (`product_id`),
+  KEY `fk_order_product1_idx` (`product_id`),
+  KEY `order_user_id_fk` (`user_id`),
+  CONSTRAINT `FK_F52993984584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_F5299398A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (3,6,3,'1500','Наличними','Оплачено');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_category_id` int(11) DEFAULT NULL,
+  `owner` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about` text COLLATE utf8mb4_unicode_ci,
+  `status` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_code` int(11) NOT NULL,
+  `start_at` datetime NOT NULL,
+  `finish_at` datetime NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_D34A04ADD614C7E7` (`price`),
+  KEY `fk_product_product_category1_idx` (`product_category_id`),
+  CONSTRAINT `FK_D34A04ADBE6903FD` FOREIGN KEY (`product_category_id`) REFERENCES `product_category` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (6,3,'apple','1200','no photo','почти новый',NULL,2,'2019-06-26 00:00:00','2019-07-02 00:00:00','Ноутбук'),(7,4,'реликвия','5000','нет фото','золотое кольцо с брилиантом',NULL,1,'2019-06-26 00:00:00','2019-07-02 00:00:00','Кольцо');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_category`
+--
+
+DROP TABLE IF EXISTS `product_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_product_category_product_category1_idx` (`parent_id`),
+  CONSTRAINT `FK_CDFC7356727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `product_category` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_category`
+--
+
+LOCK TABLES `product_category` WRITE;
+/*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
+INSERT INTO `product_category` VALUES (3,NULL,'Компютерная техника'),(4,NULL,'Ювелирние изделия');
+/*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT 'USER',
+  `status` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT 'NEW',
+  `identific_code` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_registration` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (2,'Lemeshko','Igor','lem@ukr.net','34556vbxcvb','45678','Хрещатик, 150','USER','NEW','2345325dfgdsg','2014-01-01 00:00:00'),(3,'Lemeshko','Igor','lemcvbc@ukr.net','cvbcxb','45678qwettetert','Киев','USER','NEW','sdfsfdsfddsfd','2014-01-01 00:00:00');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-06-25 11:27:29

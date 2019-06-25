@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ff18942-ca9e-48ca-be38-6f997f92196e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/homeworks.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homeworks.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVC/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MVC/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +15,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/auction/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <executable path="composer" />
     </execution>
   </component>
   <component name="DatabaseView">
@@ -65,11 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-              <folding>
-                <element signature="e#6#329#0#PHP" expanded="true" />
-              </folding>
+            <state>
+              <caret selection-end-line="9" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -89,11 +85,12 @@
         <option value="$PROJECT_DIR$/pyton" />
         <option value="$PROJECT_DIR$/index_3.php" />
         <option value="$PROJECT_DIR$/index_2.php" />
+        <option value="$PROJECT_DIR$/MVC/composer.lock" />
         <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
       <path value="$PROJECT_DIR$/auction/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/auction/vendor/doctrine/doctrine-cache-bundle" />
@@ -197,7 +194,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,21 +204,23 @@
             <path>
               <item name="Home-Works-and-stady" type="b2602c69:ProjectViewProjectNode" />
               <item name="Home-Works-and-stady" type="462c0819:PsiDirectoryNode" />
-              <item name="lesson6" type="462c0819:PsiDirectoryNode" />
+              <item name="MVC" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/new_db.sql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -253,21 +251,24 @@
       <workItem from="1560718190993" duration="1368000" />
       <workItem from="1560743720755" duration="24385000" />
       <workItem from="1560788590737" duration="17000" />
+      <workItem from="1560929558119" duration="31000" />
+      <workItem from="1561019905485" duration="4129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44946000" />
+    <option name="totallyTimeSpent" value="49106000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1533" height="875" extended-state="6" />
+    <frame x="0" y="25" width="1600" height="826" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913344" visible="true" weight="0.095366016" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913344" visible="true" weight="0.09768637" />
       <window_info id="Structure" order="1" sideWeight="0.50086653" side_tool="true" weight="0.24979658" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32756326" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966422" weight="0.32756326" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966422" weight="0.32621083" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -275,7 +276,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3288948" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.33155793" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.6168091" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003358" side_tool="true" weight="0.32756326" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.3288948" />
@@ -283,42 +284,18 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.20013432" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.19987147" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://79002eb8-1d00-4511-a4af-779b53861a5e/schema/new_bd/table/loan">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="dc0006e8-6005-4c87-a6e0-64a55c267b3d">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson4/task7.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson12/PDOConnection.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson12/classes/Users.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="das://79002eb8-1d00-4511-a4af-779b53861a5e/schema/new_bd/table/loan" />
+    <entry file="file://$PROJECT_DIR$/task2.txt" />
+    <entry file="file://$PROJECT_DIR$/lesson4/task7.php" />
+    <entry file="file://$PROJECT_DIR$/lesson12/PDOConnection.php" />
+    <entry file="file://$PROJECT_DIR$/lesson12/classes/Users.php" />
     <entry file="das://79002eb8-1d00-4511-a4af-779b53861a5e/schema/new_bd/table/friends">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="b3c4f773-dd92-4625-919f-11a67c93dcc7">
@@ -333,70 +310,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lesson13/users/DbUser.php">
+    <entry file="file://$PROJECT_DIR$/lesson13/users/DbUser.php" />
+    <entry file="file://$PROJECT_DIR$/lesson12/index.php" />
+    <entry file="file://$PROJECT_DIR$/lesson6/task11.1.php" />
+    <entry file="file://$PROJECT_DIR$/lesson6/task11.php" />
+    <entry file="file://$PROJECT_DIR$/lesson3/task3.php" />
+    <entry file="file://$PROJECT_DIR$/lesson3/task1.php" />
+    <entry file="file://$PROJECT_DIR$/lesson3/task2.php" />
+    <entry file="file://$PROJECT_DIR$/lesson3/task4.php" />
+    <entry file="file://$PROJECT_DIR$/pyton" />
+    <entry file="file://$PROJECT_DIR$/index_3.php" />
+    <entry file="file://$PROJECT_DIR$/index_2.php" />
+    <entry file="file://$PROJECT_DIR$/MVC/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="9" selection-start-line="4" selection-start-column="8" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="315">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lesson12/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="17" column="26" selection-start-line="10" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson6/task11.1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson6/task11.php">
+    <entry file="file://$PROJECT_DIR$/MVC/composer.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/task3.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/task1.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/task2.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/task4.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyton">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="37" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-          <folding>
-            <element signature="e#6#329#0#PHP" expanded="true" />
-          </folding>
+        <state>
+          <caret selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
