@@ -4,15 +4,32 @@ namespace App\Repository;
 
 use App\Entity\News;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class NewsRepository extends ServiceEntityRepository
 {
     private const COUNT_TO_PAGE = 10;
 
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, News::class);
+    }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function getWithSearchQueryBuilder(?string $term = null): QueryBuilder
+    {
+
+        $qb = $this->createQueryBuilder('n')
+            ->andWhere('n.enable = :enable')
+            ->setParameter('enable', true);
+        return $qb
+            ->orderBy('n.date', 'ASC');
+
     }
 
     /**
@@ -22,7 +39,7 @@ class NewsRepository extends ServiceEntityRepository
      */
     public function findPages(int $pages, \DateTime $date = null)
     {
-        $offset = ($pages - 1) * self::COUNT_TO_PAGE;
+        $offset = ($pages ) * self::COUNT_TO_PAGE;
 
         $qb = $this->createQueryBuilder('n')
             ->andWhere('n.enable = :enable')

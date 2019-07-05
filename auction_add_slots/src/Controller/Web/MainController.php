@@ -5,6 +5,7 @@ namespace App\Controller\Web;
 use App\Entity\News;
 use App\Entity\Product;
 use App\Repository\NewsRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,8 +28,16 @@ class MainController extends AbstractController
     /**
      * @Route("/news", name="web_news")
      */
-    public function news(Request $request)
+    public function news(Request $request, PaginatorInterface $paginator, NewsRepository $repository)
     {
+        $queryBuilder = $repository->getWithSearchQueryBuilder();
+
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+
         $pages = $request->get('pages', 1);
         /** @var NewsRepository $newsRepository */
         $newsRepository = $this->getDoctrine()->getRepository(News::class);
@@ -36,13 +45,13 @@ class MainController extends AbstractController
         $dateTime = $this->getDateTime($request);
 
         $news = $newsRepository->findPages($pages, $dateTime);
-        $count = $newsRepository->pagesCount($dateTime);
         $archive = $newsRepository->archive();
 
         return $this->render('web/main/news.html.twig', [
             'news' => $news,
-            'count' => $count,
             'archive' => $archive,
+            'pagination' => $pagination,
+
         ]);
     }
 

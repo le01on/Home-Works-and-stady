@@ -33,12 +33,12 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">{{ product.category.name }}</strong>
                         <h3 class="mb-0">{{ product.name }}</h3>
-                        <div class="mb-1 text-muted">{{ product.owner }}[{{ product.startAt|date("d F Y") }}]</div>
+                        <div class="mb-1 text-muted"> Продавец: {{ product.owner }} |Дата: {{ product.startAt|date("d F Y") }}</div>
                         <p class="card-text mb-auto">{{ product.about|raw }}</p>
-                        <a href="{{ path('show_product', {'id':product.id}) }}" class="stretched-link">Continue reading</a>
+                        <a href="{{ path('show_product', {'id':product.id}) }}" class="stretched-link">Подробнее...</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                        <img src="/images/products{{ asset(product.photo) }}">
+                        <img src="/images/products{{ asset(product.photo) }}" width="400" height="400">
                     </div>
                 </div>
             </div>

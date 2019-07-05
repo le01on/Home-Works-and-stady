@@ -4,7 +4,7 @@
     <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
             <a class="p-2 text-muted" href="{{ path('web_main') }}">Active slot</a>
-            <a class="p-2 text-muted" href="{{ path('show_all_products') }}">Slots</a>
+            <a class="p-2 text-muted active" href="{{ path('show_all_products') }}">Slots</a>
             <a class="p-2 text-muted" href="{{ path('web_news') }}">News</a>
             <a class="p-2 text-muted" href="{{ path('web_faq') }}">FAQ</a>
             <a class="p-2 text-muted" href="{{ path('web_contact_us') }}">Contact Us</a>
@@ -15,7 +15,7 @@
 {% block main %}
 
 
-    {% for product in products %}
+    {% for product in pagination %}
     <main role="main" class="container">
 <hr>
         <div class="row">
@@ -35,25 +35,25 @@
                 <div>Продавець: {{ product.owner }}</div>
                 <div>Начало торга: {{ product.startAt|date("d F Y") }}</div>
                 <div>Окончание торга: {{ product.finishAt|date("d F Y") }}</div>
-                <div>Описание: {{ product.about }}</div>
+                <div>Описание: {{ product.about|raw }}</div>
                 <div style="background-color: #9fa9b7">
-                    <div>Стартовая цена: {{ product.price }}</div>
+                    <div><strong>Стартовая цена: {{ product.price }}</strong></div>
                     <div>Количество ставок: {{ product.bitHistories|length }}</div>
-                    {% if product.lastBitHistory %}
-                        <div>Последняя ставка: {{ product.lastBitHistory }}</div>
+                    {% if product.lastBid %}
+                      <div>Последняя ставка: {{ product.lastBid }}</div>
                     {% endif %}
                 </div>
 
-                <form method="post" action="{{ path('take_bid_product', {"id":product.id}) }}">
-                    <label>Сделайте свою ставку:</label><br/>
-                    <input type="number" name="amount" placeholder="">
-                    <button class="btn-info">Take</button>
-                </form>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="{{ path('show_product', {'id':product.id}) }}"> <button class="btn-info">Сделать ставку</button></a>
+
 
             </div>
         </div>
     <hr>
-    </main>
 {% endfor %}
-
+    <div align="center"><strong>{{knp_pagination_render(pagination)}}</strong></div>
+    </main>
 {% endblock %}

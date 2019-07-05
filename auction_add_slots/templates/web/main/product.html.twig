@@ -19,39 +19,82 @@
     <main role="main" class="container">
         <div class="row">
 
-                <div class="col-lg-5 col-md-10 col-sm-12">
-                    <img src="/images/products{{ asset(product.photo) }}">
+                <div  class="col-lg-5 col-md-10 col-sm-12">
+                    <img   src="/images/products{{ asset(product.photo) }}" width="400" height="400">
                 </div>
 
             <div class="col-lg-1 col-md-6 col-sm-6 desc"></div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 desc">
+            <div id="hide" class="col-lg-6 col-md-6 col-sm-6 desc">
 
 
-                <div>Катеогрия: {{ product.category }}</div>
-                <div>Название: {{ product.name }}</div>
-                <div>Продавець: {{ product.owner }}</div>
+                <div class="text-uppercase" >Катеогрия: {{ product.category }}</div>
+                <div class="font-italic">Название: {{ product.name }}</div>
+                <div>Продавец: {{ product.owner }}</div>
                 <div>Начало торга: {{ product.startAt|date("d F Y") }}</div>
-                <div>Окончание торга: {{ product.finishAt|date("d F Y") }}</div>
-                <div>Описание: {{ product.about }}</div>
-                <div style="background-color: #9fa9b7">
-                    <div>Стартовая цена: {{ product.price }}</div>
-                    <div>Количество ставок: {{ product.bitHistories|length }}</div>
+                <div class="text-danger">Окончание торга: {{ product.finishAt|date("d F Y") }}</div>
+                <div class="text-info">Описание: {{ product.about }}</div>
+                <div id="bids" >
+                    <div style="background-color: lawngreen"><strong>Стартовая цена: {{ product.price }}</strong></div>
+                    <div>Количество ставок:
+                        <span id="count-bids"> {{ product.bitHistories|length }}</span>
+                    </div>
+                    <div style="background-color: #9fa9b7">
+                    <span id="bid-list" >
                     {% if product.lastBitHistory %}
-                        <div>Последняя ставка: {{ product.lastBitHistory }}</div>
+                        {%  for bit in product.lastBitHistory|slice(-3, 3) %}
+                            <div>Cтавка: {{ bit.getBidAmount() }} Время: {{ bit.getBidTime()|date("d F Y") }}  Пользователь - {{ bit.getUser() }}</div>
+                        {% endfor %}
                     {% endif %}
+                        </span></div>
                 </div>
 
                 <form method="post" action="{{ path('take_bid_product', {"id":product.id}) }}">
                     <label>Сделайте свою ставку:</label><br/>
-                    <input type="number" name="amount" placeholder="">
-                    <button>Take</button>
+                    <input  type="number" name="amount" placeholder="">
+                    <button class="text-success">Поставить</button>
                 </form>
+
+                <div class="text-danger"><small>Чтоб сделать ставку нужно войти или зарегистрироваться</small></div>
 
             </div>
         </div>
-
     </main>
 
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+
+    $("img").mouseenter(function(){
+            $("img").removeAttr('width', 'height');
+            $("#hide").hide();
+    });
+    $("img").mouseleave(function(){
+        $("img").attr('width', 400).attr('height', 400);
+        $("#hide").show();
+    });
+
+    $('form').submit(function(){
+        $.post(
+            "{{ path('take_bid_product', {"id":product.id}) }}", // адрес обработчика
+            $("form").serialize(), // отправляемые данные
+
+            function(msg) { // получен ответ сервера
+                bidString = '';
+                             for(let key in msg.bids) {
+                                  let bid = msg.bids[key];
+                                 bidString = bidString + '<div>Cтавка: '+bid.amount+' Время: '+bid.timebid+' Пользователь -  '+bid.user_name+'</div>';
+                             }
+                             $('#bid-list').html(bidString);
+                             $('#count-bids').html(msg.count);
+
+            });
+        return false;
+    });
+
+
+    </script>
 
 {% endblock %}
