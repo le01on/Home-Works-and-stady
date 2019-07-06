@@ -5,6 +5,8 @@
     use App\Entity\Product;
     use Doctrine\ORM\EntityManager;
     use FOS\UserBundle\Model\User;
+
+
     class CreateBid
     {
         /**
@@ -24,8 +26,9 @@
          * @param Product $product
          * @param string $amount
          * @return bool
+         *
          */
-        public function create(User $user, Product $product, string $amount): bool
+        public function create(User $user , Product $product, string $amount): bool
         {
             if (!$product->isActive() && !$user->isEnabled()) {
                 return false;

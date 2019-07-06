@@ -47,15 +47,16 @@
                         {% endfor %}
                     {% endif %}
                         </span></div>
+                   <div>Последняя ставка:  <span id="curentbid">{{ product.lastBid() }}</span></div>
                 </div>
 
-                <form method="post" action="{{ path('take_bid_product', {"id":product.id}) }}">
+                <form method="post" action="{{ path('take_bid_product', {"id":product.id}) }}" onsubmit="return validate()";>
                     <label>Сделайте свою ставку:</label><br/>
-                    <input  type="number" name="amount" placeholder="">
-                    <button class="text-success">Поставить</button>
+                    <input  id="bid" type="number" name="amount" placeholder="">
+                    <button type="submit" class="text-success">Поставить</button>
                 </form>
-
-                <div class="text-danger"><small>Чтоб сделать ставку нужно войти или зарегистрироваться</small></div>
+<div><small class="text-danger">Чтоб участвовать в торгах нужно зарегистртроваться или войти на сайт!!!</small></div>
+                <strong><div id="not-register" class="text-danger"></div></strong>
 
             </div>
         </div>
@@ -75,26 +76,69 @@
         $("img").attr('width', 400).attr('height', 400);
         $("#hide").show();
     });
+</script>
 
-    $('form').submit(function(){
-        $.post(
-            "{{ path('take_bid_product', {"id":product.id}) }}", // адрес обработчика
-            $("form").serialize(), // отправляемые данные
+    <script>
 
-            function(msg) { // получен ответ сервера
-                bidString = '';
-                             for(let key in msg.bids) {
-                                  let bid = msg.bids[key];
-                                 bidString = bidString + '<div>Cтавка: '+bid.amount+' Время: '+bid.timebid+' Пользователь -  '+bid.user_name+'</div>';
-                             }
-                             $('#bid-list').html(bidString);
-                             $('#count-bids').html(msg.count);
+        function validate() {
 
-            });
-        return false;
-    });
+            var bid = document.getElementById('bid');
+            var lastBid = document.getElementById('curentbid');
+            var last = lastBid.innerHTML;
+            console.log(bid.value);
+            console.log(lastBid.innerHTML);
+            var currentBid = +last + +last * 0.1;
+            console.log(currentBid);
+
+            if(bid.value < currentBid){
+                alert("Ваша ставка ниже допустимой");
+                return false;
+            }
+            if (bid.value > currentBid){
+
+                $(document).ready(function(){
+
+                    $("form").submit(function(){
+                        var action = $(this).attr('action');
+                        var amount = $("input[name=amount]").val();
+                        var http = new XMLHttpRequest();
+                        var params = 'amount=' + amount;
+                        http.open('POST', action, true);
+                        //Send the proper header information along with the request
+                        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                        http.onreadystatechange = function() {//Call a function when the state changes.
+                            if(http.readyState == 4 && http.status != 200){
+                                //alert("Чтоб участвовать в торгах нужно зарегистртроваться или войти на сайт!!!")
+                                var notRegister = "Ставка не принята! ";
+                                $('#not-register').html(notRegister);
+                            }
+                            if(http.readyState == 4 && http.status == 200){
+                                var response = JSON.parse(http.responseText);
+                                $('#count-bids').html(response.count);
+                                bidString = '';
+                                for(var key in response.bids) {
+                                    var bid = response.bids[key];
+                                    bidString = bidString + '<div>Cтавка: '+bid.amount+' Время: '+bid.timebid+' Пользователь -  '+bid.user_name+'</div>';
+                                    lastAmount = '<span>'+bid.amount+'</span>';
+                                }
+                                $('#count-bids').html(response.count);
+                                $('#bid-list').html(bidString);
+                                $('#curentbid').html(lastAmount);
 
 
+                            }
+                            if(http.readyState == 4 && http.status == 400) {
+                                alert(http.responseText);
+                            }
+                        }
+                        http.send(params);
+                    });
+                    return false;
+                });
+               return false;
+        }
+
+        }
     </script>
 
 {% endblock %}

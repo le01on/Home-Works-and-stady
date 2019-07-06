@@ -79,41 +79,26 @@ class ProductController extends AbstractController
         $amount = $request->request->get('amount');
         /** @var Product $product */
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
-        /** @var User $user */
-        $user = $this->getUser();
-        $res = $this->createBid->create($user, $product, $amount);
-        if (!$res) {
-            return $this->json(['error' => 'Not create bid!'], 400);
+        $date = new \DateTime();
+        $finishdate = $product->getFinishAt();
+        if ($date < $finishdate) {
+            /** @var User $user */
+            $user = $this->getUser();
+            $res = $this->createBid->create($user, $product, $amount);
+            if (!$res) {
+                return $this->json(['error' => 'Not create bid!', 'eror' => 'eror']);
+            }
+            $bids = $this->getDoctrine()->getRepository(BidHistory::class)->findBy(['product' => $product]);
+            $res = [];
+            foreach ($bids as $bid) {
+                $res[] = [
+                    'user_name' => $bid->getUser()->getUsername(),
+                    'amount' => $bid->getBidAmount(),
+                    'timebid' => $bid->getBidTime()->format("d F Y"),
+                ];
+            }
+            $res = array_slice($res, -3, 3);
+            return $this->json(['bids' => $res, 'count' => count($bids)]);
         }
-        $bids = $this->getDoctrine()->getRepository(BidHistory::class)->findBy(['product' => $product]);
-        $res = [];
-        foreach ($bids as $bid) {
-            $res[] = [
-                'user_name' => $bid->getUser()->getUsername(),
-                'amount' => $bid->getBidAmount(),
-                'timebid' => $bid->getBidTime()->format("d F Y"),
-            ];
-        }
-        $res = array_slice($res, -3, 3);
-        return $this->json(['bids' => $res, 'count' => count($bids)]);
     }
-    /**
-     * @param Request $request
-     * @return \DateTime|null
-     * @throws \Exception
-     */
-    private function getDateTime(Request $request): ?\DateTime
-    {
-        $month = $request->get('month');
-        $year = $request->get('year');
-        $dateTime = null;
-
-        if (!empty($month) && !empty($year))  {
-            $dateTime = new \DateTime();
-            $dateTime->setDate($year, $month, 1);
-        }
-
-        return $dateTime;
-    }
-
 }

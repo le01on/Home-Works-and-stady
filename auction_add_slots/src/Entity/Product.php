@@ -344,16 +344,14 @@
         {
             $bidHistories = $this->getLastBitHistory();
            if(!empty($bidHistories)){
-
-
                $bids = [];
                foreach ($bidHistories as $bid) {
                   $bids[] =  $bid->getBidAmount();
                }
 
            }
-           $bids = array_pop($bids);
-           return  $bids;
+           $bid = array_pop($bids);
+           return  $bid;
 
         }
 
